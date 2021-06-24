@@ -1,0 +1,245 @@
+@import './const.scss';
+
+.#{$prefixCls}-bordered {
+  border: 1px solid $borderColor;
+
+  th,
+  td {
+    border-right: 1px solid $borderColor;
+  }
+}
+
+.#{$prefixCls}-fixed {
+  // 设置过宽度的列的固定宽度
+  table-layout: fixed;
+}
+
+.#{$prefixCls}-title,
+.#{$prefixCls}-footer {
+  padding: 16px 16px;
+  color: rgba(0,0,0,.85);
+  text-align: left;
+}
+
+.#{$prefixCls}-title {
+  border-radius: $borderRadius $borderRadius 0 0;
+  border-bottom: 1px solid $borderColor;
+}
+
+.#{$prefixCls}-footer {
+  background: $commonBgColor;
+  border-radius: 0 0 $borderRadius $borderRadius;
+  // border-top: 1px solid $borderColor;
+}
+
+.#{$prefixCls}-thead th,
+.#{$prefixCls}-tbody td {
+  padding: 16px 16px;
+  overflow-wrap: break-word;
+  border-bottom: 1px solid $borderColor;
+}
+
+.#{$prefixCls}-thead tr th {
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  background: $commonBgColor;
+  border-bottom: 1px solid $borderColor;
+}
+
+table {
+  width: 100%;
+}
+
+.#{$prefixCls}-cell-ellipsis {
+  overflow-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.#{$prefixCls}-row-cell-break-word {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+
+
+// 选择框列样式
+.#{$prefixCls}-wrapper colgroup .#{$prefixCls}-selection-col {
+  width: 60px;
+}
+
+// 选中行tr
+.#{$prefixCls}-row-selected td {
+  color: inherit;
+  background: #e6f7ff;
+}
+
+
+// expandIcon样式
+// .#{$prefixCls} .#{$prefixCls}-row-indent + .#{$prefixCls}-row-expand-icon {
+//   margin-right: 8px;
+// }
+.#{$prefixCls}-row-expand-icon {
+  margin-right: 8px;
+  color: #1890ff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  color: inherit;
+  line-height: 13px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: $borderRadius;
+  outline: none;
+  transition: all 0.3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.#{$prefixCls}-row-expand-icon:focus,
+.#{$prefixCls}-row-expand-icon:hover {
+  color: #40a9ff;
+}
+.#{$prefixCls}-row-expand-icon:active {
+  color: #096dd9;
+}
+.#{$prefixCls}-row-expand-icon:focus,
+.#{$prefixCls}-row-expand-icon:hover,
+.#{$prefixCls}-row-expand-icon:active {
+  border-color: currentColor;
+}
+.#{$prefixCls}-row-expand-icon-collapsed::after {
+  content: '-';
+}
+.#{$prefixCls}-row-expand-icon-expanded::after {
+  content: '+';
+}
+
+
+// 可展开控制列
+.#{$prefixCls}-expand-icon-th, .#{$prefixCls}-row-expand-icon-cell {
+  width: 50px;
+  min-width: 50px;
+  text-align: center;
+}
+
+
+// 增加一级.#{$prefixCls}-body选择器提高样式优先级防止被自定义样式覆盖
+.#{$prefixCls}-tbody .#{$prefixCls}-row.#{$prefixCls}-row-hover {
+  background: rgb(230, 237, 255);
+}
+
+// 展开行
+.#{$prefixCls}-expanded-row {
+  background: #fbfbfb;
+}
+
+
+// 排序图标样式
+.#{$prefixCls}-column-sorters {
+  display: flex;
+  justify-content: center;
+  // 防止点击排序图标时出现其他th文本高亮情况
+  user-select: none;
+}
+.#{$prefixCls}-column-sorter {
+  color: #bfbfbf;
+  margin-left: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.anticon-caret-up {
+  position: relative;
+}
+.anticon-caret-down {
+  position: relative;
+  top: -4px;
+}
+.anticon.on {
+  color: #1890ff;
+}
+
+
+// 复杂dom表格容器
+.#{$prefixCls}-content {
+  position: relative;
+  clear: both;
+}
+
+// 固定列相关样式
+// 给子table dom设置宽度
+.body-wrapper-body-wrapper {
+  overflow: auto;
+}
+.#{$prefixCls}.#{$prefixCls}-scroll-position-left .#{$prefixCls}-fixed-left {
+  box-shadow: none;
+}
+.#{$prefixCls}-fixed-left, .#{$prefixCls}-fixed-left table {
+  border-radius: $borderRadius 0 0 0;
+}
+.#{$prefixCls}-fixed-left {
+  left: 0;
+  box-shadow: 6px 0 6px -4px rgba(0, 0, 0, 0.15);
+  // box-shadow: 6px 0 6px -4px rgb(0 0 0 / 15%);
+}
+.#{$prefixCls}-fixed-right {
+  right: 0;
+  box-shadow: -6px 0 6px -4px rgba(0, 0, 0, 0.15);
+  // box-shadow: 6px 0 6px -4px rgb(0 0 0 / 15%);
+}
+.#{$prefixCls}-fixed-left, .#{$prefixCls}-fixed-right {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 0;
+  transition: box-shadow .3s ease;
+  background: #fff;
+}
+.#{$prefixCls}-scroll-position-left .#{$prefixCls}-fixed-left {
+  box-shadow: none;
+}
+.#{$prefixCls}-scroll-position-right .#{$prefixCls}-fixed-right {
+  box-shadow: none;
+}
+.#{$prefixCls}-header-wrapper {
+  overflow-x: auto;
+  // 只设置宽度的话还会有样式问题（还是占位置），必须用容器包裹才行
+  // &::-webkit-scrollbar { width: 0 !important }
+  &::-webkit-scrollbar { 
+    // 使用display:none可以实现隐藏滚动条，同时又不占位置，还可以滚动
+    display: none;
+  }
+}
+// 不隐藏右侧导航栏的滚动条，右侧需要显示竖向滚动条
+.#{$prefixCls}-fixed-left .#{$prefixCls}-body-inner {
+  &::-webkit-scrollbar { 
+    display: none;
+  }
+}
+// 固定列右侧可能会多出一块
+.#{$prefixCls}-fixed-right .#{$prefixCls}-thead {
+  background: $commonBgColor;
+}
+
+
+// 空数据样式
+.#{$prefixCls}-empty {
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $borderColor;
+  border-top: none;
+}
+.#{$prefixCls}-empty-text {
+  color: rgba(0,0,0,.45);
+  margin-bottom: 0;
+}
